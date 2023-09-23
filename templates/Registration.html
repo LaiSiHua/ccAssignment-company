@@ -33,21 +33,6 @@
 }</script>
 
   <style>
-    .createBtn {
-      background-color: #478ac9;
-      color: white;
-      margin-top: 20px;
-      position: relative;
-      padding: 10px 30px 10px 30px;
-      border: none;
-    }
-
-    .createBtn:hover {
-      text-decoration: none;
-      color: white;
-      cursor: pointer;
-    }
-
     .popup-msg {
       background-color: #D1FFBD;
       padding: 10px 30px;
@@ -142,32 +127,37 @@
       data-image-height="121">
     <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
   </header>
+
+
   <section class="u-clearfix u-section-1" id="sec-49e2">
     <div class="u-clearfix u-sheet u-sheet-1">
       <h2 class="u-text u-text-default u-text-1">Company Registration</h2>
       <div class="u-form u-form-1">
-        <form action="/RegistrationProcess" method="POST" enctype="multipart/form-data"
-          class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form"
-          style="padding: 10px;">
+        <form action="/Registration" method="POST" style="padding: 10px;">
           <div class="u-form-group u-form-name">
             <label for="name-c8ea" class="u-label">Company Name</label>
             <input type="text" placeholder="Enter Company Name" id="name-c8ea" name="name"
               class="u-input u-input-rectangle" required="">
           </div>
-          <div class="u-form-email u-form-group">
-            <label for="email-c8ea" class="u-label">Description of Company</label>
-            <input type="text" placeholder="Enter Description of Company" id="text-4ad5" name="description"
-              class="u-input u-input-rectangle" required="">
+          <div class="u-form-group u-form-group-4">
+            <label for="text-4ad5" class="u-label">Email </label>
+            <input type="email" placeholder="Enter Address" id="email-c8ea" name="email"
+              class="u-input u-input-rectangle">
           </div>
           <div class="u-form-group u-form-group-3">
             <label for="text-ee7a" class="u-label">Contact Number</label>
             <input type="text" placeholder="Enter Contact Number" id="text-ee7a" name="contactNum"
               class="u-input u-input-rectangle">
           </div>
-          <div class="u-form-group u-form-group-4">
-            <label for="text-4ad5" class="u-label">Email </label>
-            <input type="email" placeholder="Enter Address" id="email-c8ea" name="email"
+          <div class="u-form-group u-form-group-6">
+            <label for="text-bc5e" class="u-label">Company Address</label>
+            <input type="text" placeholder="Enter Entry Requirements" id="text-bc5e" name="address"
               class="u-input u-input-rectangle">
+          </div>
+          <div class="u-form-email u-form-group">
+            <label for="email-c8ea" class="u-label">Description of Company</label>
+            <input type="text" placeholder="Enter Description of Company" id="text-4ad5" name="description"
+              class="u-input u-input-rectangle" required="">
           </div>
           <div class="u-form-group u-form-group-5">
             <label for="text-c4b2" class="u-label">Description of Work</label>
@@ -179,6 +169,7 @@
             <input type="text" placeholder="Enter Entry Requirements" id="text-bc5e" name="entryReq"
               class="u-input u-input-rectangle">
           </div>
+          
           <div class="u-form-group u-form-group-6">
             <label for="text-bc5e" class="u-label">Upload Company Logo</label>
             <input type="file" id="fileInput" name="company_image_file" style="display: none;">
@@ -187,23 +178,23 @@
           </div>
 
           <div class="u-align-left u-form-group u-form-submit">
+            <!-- <input type="submit" value="Submit" class="u-btn u-btn-submit u-button-style u-btn-1"> -->
             <button type="submit" class="createBtn">Submit</button>
           </div>
 
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+          <div class="popup-msg" role="alert">
+            <span class="msg">{{ message }}</span>
+            <input type="button" class="close-msg" value=&#10006 onclick=delete_flash(this)>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
         </form>
       </div>
-
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      {% for message in messages %}
-      <div class="popup-msg" role="alert">
-        <span class="msg">{{ message }}</span>
-        <input type="button" class="close-msg" value=&#10006 onclick=delete_flash(this)>
-      </div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
-
     </div>
   </section>
 

@@ -4,6 +4,8 @@ import os
 import boto3
 from config import *
 
+import logging
+
 app = Flask(__name__)
 app.secret_key = "Company"
 
@@ -31,54 +33,61 @@ def indexCompany():
 def registration():
     return render_template('Registration.html')
 
-@app.route("/RegistrationProcess", methods=['POST'])
-def registrationProcess():
+@app.route("/Registration", methods=['POST'])
+def AddCompany():
+    print('1')
     company_name = request.form['name']
-    company_des = request.form['description']
-    contact = request.form['contactNum']
     email = request.form['email']
+    contact = request.form['contactNum']
+    address = request.form['address']
+    company_des = request.form['description']
     work_des = request.form['workDes']
     entry_req = request.form['entryReq']
-    image = request.files['company_image_file']
+    # image = request.files['company_image_file']
     
-    insert_sql = "INSERT INTO Company VALUES (%s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO Company VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
+    print('2')
+    # if image.filename == "":
+    #     app.logger.info('yes')
+        # return "Please select a file"
     
-    if image.filename == "":
-        return "Please select a file"
-    
-    try:
-        cursor.execute(insert_sql, (company_name, company_des, contact, email, work_des, entry_req))
-        db_conn.commit()
+    # try:
+    app.logger.info('success')
+
+    cursor.execute(insert_sql, (company_name, email, contact, address, company_des, work_des, entry_req))
+    flash('Company Registered Successfully')
+
+    db_conn.commit()
         
         # Uplaod image file in S3 #
-        company_image_file_name_in_s3 = "company-name-" + str(company_name) + "_image_file"
-        s3 = boto3.resource('s3')
+        # company_image_file_name_in_s3 = "company-name-" + str(company_name) + "_image_file"
+        # s3 = boto3.resource('s3')
         
-        try:
-            print("Data inserted in MariaDB RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=company_image_file_name_in_s3, Body=image)
-            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-            s3_location = (bucket_location['LocationConstraint'])
+        # try:
+        #     print("Data inserted in MariaDB RDS... uploading image to S3...")
+        #     s3.Bucket(custombucket).put_object(Key=company_image_file_name_in_s3, Body=image)
+        #     bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+        #     s3_location = (bucket_location['LocationConstraint'])
 
-            if s3_location is None:
-                s3_location = ''
-            else:
-                s3_location = '-' + s3_location
+        #     if s3_location is None:
+        #         s3_location = ''
+        #     else:
+        #         s3_location = '-' + s3_location
 
-            object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
-                s3_location,
-                custombucket,
-                company_image_file_name_in_s3)
+        #     object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+        #         s3_location,
+        #         custombucket,
+        #         company_image_file_name_in_s3)
 
-        except Exception as e:
-            return str(e)
+        # except Exception as e:
+        #     return str(e)
         
-    finally:
-        flash('Company Registered Successfully')
-        cursor.close()
-
-    return redirect(url_for('Jobs'))
+    # finally:
+    cursor.close()
+        
+    # return redirect(url_for('Jobs'))
+    return render_template('Registration.html')
 
 # Job
 @app.route("/Jobs", methods=['GET'])
