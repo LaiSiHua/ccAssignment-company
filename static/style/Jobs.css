@@ -1,0 +1,146 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 466px;
+}
+
+.u-section-1 .u-text-1 {
+  --animation-custom_in-translate_x: 0px;
+  --animation-custom_in-translate_y: 0px;
+  --animation-custom_in-opacity: 0;
+  --animation-custom_in-rotate: 0deg;
+  --animation-custom_in-scale: 0.3;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-table-1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.u-block-cb6e-10 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.u-block-cb6e-12 {
+  font-weight: 700;
+  background-image: none;
+}
+
+.u-block-cb6e-13 {
+  font-weight: 700;
+  background-image: none;
+}
+
+.u-block-cb6e-14 {
+  font-weight: 700;
+  background-image: none;
+}
+
+.u-block-cb6e-15 {
+  font-weight: 700;
+  background-image: none;
+}
+
+.u-section-1 .u-table-cell-1 {
+  background-image: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.u-section-1 .u-table-cell-2 {
+  background-image: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.u-section-1 .u-table-cell-3 {
+  background-image: none;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.u-section-1 .u-table-cell-4 {
+  background-image: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  font-weight: 700;
+  padding: 0;
+}
+
+.u-section-1 .u-btn-2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-size: 0.875rem;
+}
+
+.u-section-1 .u-table-cell-9 {
+  font-weight: 700;
+}
+
+.u-section-1 .u-btn-3 {
+  background-image: none;
+  padding: 0;
+}
+
+.u-section-1 .u-table-cell-10 {
+  font-weight: 400;
+}
+
+.u-section-1 .u-btn-4 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-size: 0.875rem;
+}
+
+.u-section-1 .u-table-cell-13 {
+  font-weight: 700;
+}
+
+.u-section-1 .u-btn-5 {
+  background-image: none;
+  padding: 0;
+}
+
+.u-section-1 .u-table-cell-14 {
+  font-weight: 400;
+}
+
+.u-section-1 .u-btn-6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-style: solid;
+  font-size: 0.875rem;
+}
+
+.u-block-cb6e-45 {
+  background-image: none;
+}
+
+.u-section-1 .u-btn-7 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 53px 60px 37px auto;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-table-1 {
+    height: 361px;
+  }
+
+  .u-section-1 .u-btn-7 {
+    margin-top: -330px;
+    margin-right: 0;
+    margin-bottom: 60px;
+  }
+}

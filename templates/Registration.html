@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Company Registration">
+  <meta name="description" content="">
+  <meta name="generator" content="Nicepage 5.17.1, nicepage.com">
+  <meta name="referrer" content="origin">
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Registration">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+  <title>Registration</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/nicepage.css') }}" type="text/css" media="screen">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/Registration.css') }}" type="text/css"
+    media="screen">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+  <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='script/jquery.js') }}"
+    defer=""></script>
+  <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='script/nicepage.js') }}"
+    defer=""></script>
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/default-logo.jpg"
+}</script>
+
+  <style>
+    .createBtn {
+      background-color: #478ac9;
+      color: white;
+      margin-top: 20px;
+      position: relative;
+      padding: 10px 30px 10px 30px;
+      border: none;
+    }
+
+    .createBtn:hover {
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .popup-msg {
+      background-color: #D1FFBD;
+      padding: 10px 30px;
+      position: absolute;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .msg {
+      font-size: 14px;
+      color: #006100;
+      font-weight: bold;
+    }
+
+    .close-msg {
+      border: none;
+      background-color: #D1FFBD;
+      float: right;
+      color: #006100;
+      font-size: 10px;
+      padding-top: 5px;
+      margin-left: 20px;
+    }
+  </style>
+
+</head>
+
+<body class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-c28b"><a href="https://nicepage.com"
+      class="u-image u-logo u-image-1">
+      <img src="{{ url_for('static', filename='images/default-logo.jpg') }}" class="u-logo-image u-logo-image-1">
+    </a>
+    <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+      <div class="menu-collapse" style="font-size: 1.25rem; letter-spacing: 0px;">
+        <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+          href="#">
+          <svg class="u-svg-link" viewBox="0 0 24 24">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use>
+          </svg>
+          <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <rect y="1" width="16" height="2"></rect>
+              <rect y="7" width="16" height="2"></rect>
+              <rect y="13" width="16" height="2"></rect>
+            </g>
+          </svg>
+        </a>
+      </div>
+      <div class="u-custom-menu u-nav-container">
+        <ul class="u-nav u-unstyled u-nav-1">
+          <li class="u-nav-item">
+            <a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              href="{{ url_for('registration')}}" style="padding: 10px 28px;">Registration</a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              href="{{ url_for('Application')}}" style="padding: 10px 28px;">Application</a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              href="{{ url_for('Jobs')}}" style="padding: 10px 28px;">Jobs</a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+              style="padding: 10px 28px;" href="#">Log Out</a>
+          </li>
+        </ul>
+      </div>
+      <div class="u-custom-menu u-nav-container-collapse">
+        <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+          <div class="u-inner-container-layout u-sidenav-overflow">
+            <div class="u-menu-close"></div>
+            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+              <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                  href="{{ url_for('registration') }}">Registration</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                  href="{{ url_for('Application') }}">Application</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url_for('Jobs') }}">Jobs</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" href="#">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+      </div>
+    </nav><img class="u-image u-image-contain u-image-default u-image-2"
+      src="{{ url_for('static', filename='images/TARUMT1.jpg') }}" alt="" data-image-width="416"
+      data-image-height="121">
+    <div class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+  </header>
+  <section class="u-clearfix u-section-1" id="sec-49e2">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h2 class="u-text u-text-default u-text-1">Company Registration</h2>
+      <div class="u-form u-form-1">
+        <form action="/RegistrationProcess" method="POST" enctype="multipart/form-data"
+          class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form"
+          style="padding: 10px;">
+          <div class="u-form-group u-form-name">
+            <label for="name-c8ea" class="u-label">Company Name</label>
+            <input type="text" placeholder="Enter Company Name" id="name-c8ea" name="name"
+              class="u-input u-input-rectangle" required="">
+          </div>
+          <div class="u-form-email u-form-group">
+            <label for="email-c8ea" class="u-label">Description of Company</label>
+            <input type="text" placeholder="Enter Description of Company" id="text-4ad5" name="description"
+              class="u-input u-input-rectangle" required="">
+          </div>
+          <div class="u-form-group u-form-group-3">
+            <label for="text-ee7a" class="u-label">Contact Number</label>
+            <input type="text" placeholder="Enter Contact Number" id="text-ee7a" name="contactNum"
+              class="u-input u-input-rectangle">
+          </div>
+          <div class="u-form-group u-form-group-4">
+            <label for="text-4ad5" class="u-label">Email </label>
+            <input type="email" placeholder="Enter Address" id="email-c8ea" name="email"
+              class="u-input u-input-rectangle">
+          </div>
+          <div class="u-form-group u-form-group-5">
+            <label for="text-c4b2" class="u-label">Description of Work</label>
+            <input type="text" placeholder="Enter Description of Work" id="text-c4b2" name="workDes"
+              class="u-input u-input-rectangle">
+          </div>
+          <div class="u-form-group u-form-group-6">
+            <label for="text-bc5e" class="u-label">Entry Requirements</label>
+            <input type="text" placeholder="Enter Entry Requirements" id="text-bc5e" name="entryReq"
+              class="u-input u-input-rectangle">
+          </div>
+          <div class="u-form-group u-form-group-6">
+            <label for="text-bc5e" class="u-label">Upload Company Logo</label>
+            <input type="file" id="fileInput" name="company_image_file" style="display: none;">
+            <label for="fileInput" id="fileNameLabel" name="company_image_file">No file selected</label>
+            <a href="#" id="uploadButton" class="u-btn u-btn-submit u-button-style u-btn-1">Upload</a>
+          </div>
+
+          <div class="u-align-left u-form-group u-form-submit">
+            <button type="submit" class="createBtn">Submit</button>
+          </div>
+
+        </form>
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="popup-msg" role="alert">
+        <span class="msg">{{ message }}</span>
+        <input type="button" class="close-msg" value=&#10006 onclick=delete_flash(this)>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+    </div>
+  </section>
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9a2e">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+    </div>
+  </footer>
+  <section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+      <span>Website Templates</span>
+    </a>
+    <p class="u-text">
+      <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+      <span>Website Builder Software</span>
+    </a>.
+  </section>
+
+</body>
+
+</html>
+
+<script>
+  const fileInput = document.getElementById("fileInput");
+  const fileNameLabel = document.getElementById("fileNameLabel");
+
+  document.getElementById("uploadButton").addEventListener("click", function () {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener("change", function () {
+    // Get the selected file(s)
+    const selectedFile = this.files[0];
+
+    // Update the label with the selected file name
+    if (selectedFile) {
+      fileNameLabel.textContent = selectedFile.name;
+    } else {
+      fileNameLabel.textContent = "No file selected";
+    }
+  });
+
+</script>
