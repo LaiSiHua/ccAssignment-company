@@ -104,7 +104,7 @@
       <h2 class="u-align-center u-text u-text-default u-text-1" data-animation-name="customAnimationIn"
         data-animation-duration="1500" data-animation-delay="250">Create Jobs</h2>
       <div class="u-form u-form-1">
-        <form action="{{ url_for('addJob') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ url_for('addJob') }}" method="POST" 
           class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form"
           style="padding: 10px;">
           <div class="u-form-group u-form-name">
@@ -123,13 +123,9 @@
               class="u-input u-input-rectangle">
           </div>
           <div class="u-align-left u-form-group u-form-submit">
-            <input type="submit" value="submit" class="u-btn u-btn-submit u-button-style u-btn-1">
+            <button type="submit">Submit</button>
           </div>
-          <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-          <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try
-            again. </div>
-          <input type="hidden" value="" name="recaptchaResponse">
-          <input type="hidden" name="formServices" value="c5607ebc-d3e1-738d-4dc8-1e5dc1cac5f0">
+        
         </form>
       </div>
     </div>
