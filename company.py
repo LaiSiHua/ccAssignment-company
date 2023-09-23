@@ -33,7 +33,7 @@ def indexCompany():
 def registration():
     return render_template('Registration.html')
 
-@app.route("/Registration", methods=['POST'])
+@app.route("/AddCompany", methods=['POST'])
 def AddCompany():
     print('1')
     company_name = request.form['name']
@@ -43,9 +43,9 @@ def AddCompany():
     company_des = request.form['description']
     work_des = request.form['workDes']
     entry_req = request.form['entryReq']
-    # image = request.files['company_image_file']
+    #image = request.files['company_image_file']
     
-    insert_sql = "INSERT INTO Company VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO Company (name,email,contactNum,address,description,workDes,entryReq) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
     print('2')
     # if image.filename == "":
@@ -106,6 +106,7 @@ def CreateJobs():
 @app.route("/Jobs", methods=['POST'])
 def addJob():
     if request.method == 'POST':
+        
         job_title = request.form['jobTitle']
         job_location = request.form['jobLocation']
         min_req = request.form['minReq']
@@ -114,9 +115,11 @@ def addJob():
         cursor = db_conn.cursor()
         
         try:         
-            insert_sql = "INSERT INTO Job (job_title, job_location, min_req) VALUES (%s, %s, %s)"
+            print("1")
+            insert_sql = "INSERT INTO Job (jobTitle, jobLocation, minReq) VALUES (%s, %s, %s)"
             cursor.execute(insert_sql, (job_title, job_location, min_req))
             db_conn.commit()
+            print("yes")
             # Get the auto-generated job_id
             auto_generated_job_id = cursor.lastrowid
         finally:
@@ -127,35 +130,43 @@ def addJob():
     return render_template('AddJob.html')
 
 #
-@app.route("/edit/<int:id>", methods=['POST', 'GET'])
-def editJob(id):
-    cursor = db_conn.cursor()
-    if request.method == 'GET':
+@app.route("/LoadJob/<int:id>")
+def LoadJob(id):
+        cursor = db_conn.cursor()
+        print(id)
             # Fetch the job details from the database based on the provided 'id'
-            cursor.execute('SELECT * FROM Job WHERE jobID = %s', (id))
-            job = cursor.fetchone()
+        cursor.execute('SELECT * FROM Job WHERE jobID = %s', (id))
+        job = cursor.fetchone()
+        if job:
+            # Render the edit job form with the fetched job details
+            return render_template('EditJob.html', job=job, id=id)
+        return render_template('index.html')
+        
+    
 
-            if job:
-                # Render the edit job form with the fetched job details
-                return render_template('EditJob.html', job=job, id=id)
 
-    elif request.method == 'POST':
-        # Update the job details in the database based on the form submission
-        job_id = request.form['jobID']
-        job_title = request.form['jobTitle']
-        job_location = request.form['jobLocation']
-        min_req = request.form['minReq']
+@app.route("/EditJob",methods=['POST'])
+def EditJob():
 
-        cursor.execute('UPDATE Job SET jobTitle = %s, jobLocation = %s, minReq = %s WHERE jobID = %s',
-                    (job_title, job_location, min_req, id))
-        db_conn.commit()
+    cursor = db_conn.cursor()
+    # Update the job details in the database based on the form submission
+    job_id = request.form['jobID']
+    job_title = request.form['jobTitle']
+    job_location = request.form['jobLocation']
+    min_req = request.form['minReq']
 
-        cursor.close()
+    cursor.execute('UPDATE Job SET jobTitle = %s, jobLocation = %s, minReq = %s WHERE jobID = %s',
+                    (job_title, job_location, min_req, job_id))
+    db_conn.commit()
 
-        # Redirect to the jobs page after editing
-        return redirect(url_for('Jobs'))
 
-#
+    cursor.close()
+
+    # Redirect to the jobs page after editing
+    return redirect(url_for('Jobs'))
+
+
+
 @app.route("/delete/<int:id>", methods=['GET'])
 def deleteJob(id):
     cursor = db_conn.cursor()
